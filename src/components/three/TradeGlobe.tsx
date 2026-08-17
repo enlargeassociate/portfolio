@@ -194,9 +194,9 @@ function GlobeScene() {
 
 export function TradeGlobe() {
   return (
-    <div className="w-full h-full min-h-[400px] md:min-h-[550px]">
+    <div className="w-full h-full min-h-[350px]">
       <Canvas
-        camera={{ position: [0, 0, 2.5], fov: 50 }}
+        camera={{ position: [0, 0, 2.8], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
