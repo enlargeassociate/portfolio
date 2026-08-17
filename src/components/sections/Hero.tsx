@@ -8,7 +8,7 @@ const TradeGlobe = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-full min-h-[350px] md:min-h-[550px] flex items-center justify-center">
+      <div className="w-full h-full min-h-[400px] md:min-h-[550px] flex items-center justify-center">
         <div className="w-40 h-40 rounded-full bg-gradient-to-br from-accent-blue/20 to-accent-purple/20 animate-pulse" />
       </div>
     ),
@@ -26,9 +26,17 @@ export function Hero() {
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent-purple/10 dark:bg-accent-purple/5 rounded-full blur-3xl animate-glow" />
 
       <div className="container-wide mx-auto px-6 md:px-12 lg:px-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-4 items-center">
-          {/* Left content */}
-          <div className="space-y-8">
+        {/* Centered layout — globe behind text */}
+        <div className="relative flex flex-col items-center text-center">
+          {/* Globe positioned absolutely behind the content */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60 md:opacity-50">
+            <div className="w-full max-w-[600px] lg:max-w-[700px] aspect-square">
+              <TradeGlobe />
+            </div>
+          </div>
+
+          {/* Text content on top */}
+          <div className="relative z-10 space-y-8 max-w-3xl">
             {/* Label */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card">
               <div className="w-2 h-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple animate-pulse" />
@@ -45,13 +53,13 @@ export function Hero() {
             </h1>
 
             {/* Supporting text */}
-            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-md leading-relaxed">
+            <p className="text-lg text-gray-500 dark:text-gray-400 max-w-md mx-auto leading-relaxed">
               Reliable distribution, trading and export solutions for quality
               FMCG products across global markets.
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap justify-center gap-4 pt-2">
               <Button href="#brands" variant="primary" showArrow>
                 Explore Brands
               </Button>
@@ -59,11 +67,6 @@ export function Hero() {
                 Get in Touch
               </Button>
             </div>
-          </div>
-
-          {/* Right - 3D Globe */}
-          <div className="relative">
-            <TradeGlobe />
           </div>
         </div>
       </div>
